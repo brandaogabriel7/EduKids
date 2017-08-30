@@ -1,0 +1,67 @@
+/* Exercício 1: Criar uma transição para quando o mouse estiver em cima dos
+ * botões play/stop (para que o elemento se revele lentamente)
+ */
+ #controles ul {
+   transition: transform .3s ease-in-out;
+ }
+
+/*
+ * Exercício 2: Você deve implementar uma metáfora visual para cada um dos 4
+ * estados dos animais. Algumas *sugestões*:
+ *   - com-fome: animal piscando (opacidade variando)
+ *   - satisfeito: uma borda verde no animal e o animal fica girando de alegria
+ *   - com-raiva: animal fica pulsando
+ *   - atacando: animal dá um salto e cresce, com uma borda vermelha
+ */
+.com-fome {
+  animation: diminui .5s ease-in-out 0s infinite alternate;
+  padding: 0;
+  border: solid 5px blue;
+  perspective: 400px;
+}
+
+.satisfeito {
+  padding: 0;
+  border: solid 5px green;
+  animation: rodarY .5s linear .0s infinite alternate, rodarZ .2s ease-out 0s 1 normal;
+  perspective: 400px;
+}
+
+.com-raiva {
+  padding: 0;
+  border: solid 5px orange;
+  animation: tremendo .05s ease 0s infinite alternate;
+  perspective: 400px;
+}
+
+.atacando {
+  padding: 0;
+  animation: aumenta .5s ease-in-out 0s infinite alternate;
+  border: solid 5px red;
+  perspective: 400px;
+}
+
+@keyframes diminui {
+  from { transform: scale3d(.2,.3,.5); }
+  to { transform: scale3d(1,1,1); }
+}
+
+@keyframes aumenta {
+  from { transform: scale3d(1,1,1,); }
+  to { transform: scale3d(1.2,1.2,1.2); }
+}
+
+@keyframes tremendo {
+  from { transform: rotate(10deg); }
+  to { transform: rotate(-10deg); }
+}
+
+@keyframes  rodarY{
+  from { transform: rotateY(0); }
+  to { transform: rotateY(360deg); }
+}
+
+@keyframes  rodarZ{
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}
